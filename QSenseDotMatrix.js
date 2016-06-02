@@ -1,4 +1,4 @@
-define(["./dotMatrix", "./d3.min", "css!./QSenseDotMatrix.css"],
+define(["./dotMatrix", "./d3.min", "./rainbowvis", "css!./QSenseDotMatrix.css"],
   function(template) {
     "use strict";
     //palette de couleur par défaut
@@ -109,10 +109,8 @@ define(["./dotMatrix", "./d3.min", "css!./QSenseDotMatrix.css"],
         var div = document.getElementById(id);
 
         //recup de la valeur de la mesure
-        //var measureName = hc.qMeasureInfo[0].qFallbackTitle;
         var value = hc.qDataPages[0].qMatrix;
 				
-				//console.log(value);
 				var data = new Array();
 				var cumul = 0;
 				for (var i = 0; i < value.length; i++) {
@@ -127,13 +125,15 @@ define(["./dotMatrix", "./d3.min", "css!./QSenseDotMatrix.css"],
         //Création de la jauge
 				var colonnes = Math.min(limiteMax, layout.nbCol);
 				var lignes = Math.min(limiteMax, layout.nbLig);
-				
-				console.log(data);
-				
+								
 				if(!iconMatrix){
-				  var matrix = dotMatrix(div, data, palette, width, height, colonnes, lignes);
+				  var matrix = dotMatrix(div, data, palette, width, height, colonnes, lignes, 'rect');
 				}else{
-					iconMatrix = 'http://'+window.location.hostname+'/content/default/' + iconMatrix;
+					var machineName = window.location.hostname;
+					if(machineName = 'localhost'){
+					  machineName += ':4848';
+					}
+					iconMatrix = 'http://'+machineName+'/content/default/' + iconMatrix;
    			  var matrix = svgMatrix(div, iconMatrix, data, palette, width, height, colonnes, lignes);
 				}
     }
