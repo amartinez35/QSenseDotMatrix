@@ -1,6 +1,6 @@
 {
 	"name" : "QSense dot matrix",
-	"description" : "QSense simple gauge",
+	"description" : "QSense dot matrix",
 	"icon" : "gauge-chart",
 	"type" : "visualization",
 	"version": "0.0.1",
