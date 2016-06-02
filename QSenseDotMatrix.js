@@ -133,7 +133,7 @@ define(["./dotMatrix", "./d3.min", "css!./QSenseDotMatrix.css"],
 				if(!iconMatrix){
 				  var matrix = dotMatrix(div, data, palette, width, height, colonnes, lignes);
 				}else{
-					iconMatrix = 'http://'+window.location.hostname+':4848/content/default/' + iconMatrix;
+					iconMatrix = 'http://'+window.location.hostname+'/content/default/' + iconMatrix;
    			  var matrix = svgMatrix(div, iconMatrix, data, palette, width, height, colonnes, lignes);
 				}
     }
